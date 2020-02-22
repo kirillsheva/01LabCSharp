@@ -80,6 +80,7 @@ namespace _01LabShevchenko
 
         private async void ProcessingInf(object obj)
         {
+            bool success = false;
             WesternZodiac = "";
             ChineseZodiac = "";
             //await Task.Run(() => Thread.Sleep(2000));
@@ -88,11 +89,13 @@ namespace _01LabShevchenko
                     try
                     {
                         CalculateAge();
+                        success = true;
                     }
                     catch (Exception e)
                     {
                         MessageBox.Show(e.Message);
                     }
+                    if (!success) return;
                     WesternZodiac = "Your western zodiac is : " + CalcWesternZodiac();
                     ChineseZodiac = "Your chinese zodiac is : " + CalcChineseZodiac();
                 });
